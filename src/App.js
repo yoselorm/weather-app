@@ -17,11 +17,21 @@ function App() {
       })
 
     }
+    console.log(loc)
+  }
+  const clicker = (e) => {
+    axios.get(url).then((response) => {
+      setData(response.data)
+      console.log(response.data)
+    })
+
+    console.log(loc)
   }
   return (
     <div className="app">
       <div className="search">
-        <input type='text' value={loc} onChange={(e) => setLoc(e.target.value)} placeholder="location" onKeyDown={search} />
+        <input type='text' value={loc} onChange={(e) => setLoc(e.target.value)} placeholder="Enter state/city" onKeyDown={search} />
+        <button className="search" onClick={clicker}>search</button>
       </div>
       <div className="container">
         <div className="top">
