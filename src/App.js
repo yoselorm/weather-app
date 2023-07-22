@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 function App() {
 
@@ -20,13 +20,22 @@ function App() {
     console.log(loc)
   }
   const clicker = (e) => {
-    axios.get(url).then((response) => {
-      setData(response.data)
-      console.log(response.data)
-    })
+    try {
+      axios.get(url).then((response) => {
+        setData(response.data)
+        console.log(response)
+
+      })
+    }
+    catch (error) {
+      console.log(error)
+    }
+
 
     console.log(loc)
+
   }
+
   return (
     <div className="app">
       <div className="search">
